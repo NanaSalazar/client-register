@@ -1,6 +1,7 @@
 const express = require("express")
 const clients = require("./data.json")
 
+
 const app = express()
 
 app.use(express.json())
@@ -8,6 +9,7 @@ app.use(express.urlencoded( {extended: true}))
 
 app.get("/back/data", (req, res) => {
     res.send(clients)
+    console.log(email, pass)
 })
 
 app.post("/back/data", (req, res) => {
