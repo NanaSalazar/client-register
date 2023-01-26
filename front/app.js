@@ -1,13 +1,11 @@
+ const button = document.querySelector('#ilogon')
 
-const login = document.querySelector('#ilogon')
+ button.addEventListener('click', loginClient)
 
-login.addEventListener('click', loginClient)
+ function loginClient() {
+    const email = document.querySelector("#iemail").value 
 
-function loginClient() {
-    const email = document.querySelector('#iemail').value
-    const pass = document.querySelector('#ipass').value
+    console.log(email)
+ }
 
-
-}
-
-
+module.exports = {button}
