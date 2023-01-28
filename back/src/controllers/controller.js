@@ -42,22 +42,21 @@ exports.put = async (req, res) => {
 }
 
 exports.patch = async (req, res) => {
-    const { email} = req.body
-    
-    const clientById = clients.filter(client => client.id === parseInt(req.params.id))[0]
-    const clientIndex = clients.findIndex(client => client.id === parseInt(req.params.id))
-    const clientUpdated = { email}
-
-    const newClient = { ...clientById, ...clientUpdated}
-
-    clients.splice(clientIndex, 1, newClient)
-
-    res.send(newClient)
+    const { password} = req.body
+    try {
+        const data = await repository.patch( {password}, req.params.id)
+        res.status(201).send(data)
+    } catch(e) {
+        res.status(500).send({message: "error", error: e})
+    }
 
 }
 
 exports.delete = async (req, res) => {
-    const clientIndex = clients.findIndex(client => client.id === parseInt(req.params.id))
-
-    clients.splice(clientIndex, 1)
+    try {
+        const client = await repository.delete(req.params.id)
+        res.status(200).send(client)
+    } catch(e) {
+        res.status(500).send({message: "error", error: e})
+    }
 }

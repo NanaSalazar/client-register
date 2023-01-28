@@ -32,3 +32,29 @@ exports.put = async (register, id) => {
 
     return register
 }
+
+exports.patch = async (data, id) => {
+    const { password} = data
+
+    const clientById = clients.find(client => client.id === parseInt(id))
+    const clientIndex = clients.findIndex(client => client.id === parseInt(id))
+    const updatedAt = Date.now()
+    const clientUpdated = {password, updatedAt}
+
+    for (let prop in clientUpdated) {
+        if (typeof clientUpdated[prop] === "undefined") delete clientUpdated[prop]
+    }
+
+    const newClient = { ...clientById, ...clientUpdated}
+
+    clients.splice(clientIndex, 1, newClient)
+
+    return newClient
+}
+
+exports.delete = async(id) => {
+    const clientIndex = clients.findIndex(client => client.id === parseInt(id))
+    const deletedClient = clients.splice(clientIndex, 1)
+
+    return deletedClient
+}
