@@ -3,9 +3,9 @@ const router = express.Router()
 
 const controller = require('./../controllers/controller')
 
-router.get("/data", controller.get)
+router.get("/", controller.get)
 
-router.post("/data", controller.post)
+router.post("/", controller.post)
 
 router.route("/:id")
 

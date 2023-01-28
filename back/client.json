@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Thomas",
+        "email": "thomas@server.com",
+        "password" :"thomas123",
+        "creadtedAt": null,
+        "updatedAt": null,
+        "id": 1
+    },
+    {
+        "name": "Sophie",
+        "email": "sophie@server.com",
+        "password" :"sophie123",
+        "creadtedAt": null,
+        "updatedAt": null,
+        "id": 2
+    }
+   
+]

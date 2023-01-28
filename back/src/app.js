@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
     res.status(200).send({"message": "API works!"})
 })
 
-app.use('/', dataRoutes)
+app.use('/clients', dataRoutes)
 
 module.exports = app
