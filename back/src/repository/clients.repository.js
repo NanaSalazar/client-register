@@ -28,6 +28,9 @@ exports.post = async (newRegister) => {
 
 exports.put = async (register, id) => {
     const clientIndex = clients.findIndex(client => client.id === parseInt(id))
+    if (clientIndex < 0) {
+        return null
+    }
     clients.splice(clientIndex, 1, register)
 
     return register
@@ -38,6 +41,9 @@ exports.patch = async (data, id) => {
 
     const clientById = clients.find(client => client.id === parseInt(id))
     const clientIndex = clients.findIndex(client => client.id === parseInt(id))
+    if (clientIndex < 0) {
+        return null
+    }
     const updatedAt = Date.now()
     const clientUpdated = {password, updatedAt}
 
@@ -54,6 +60,9 @@ exports.patch = async (data, id) => {
 
 exports.delete = async(id) => {
     const clientIndex = clients.findIndex(client => client.id === parseInt(id))
+    if (clientIndex < 0) {
+        return null
+    }
     const deletedClient = clients.splice(clientIndex, 1)
 
     return deletedClient
